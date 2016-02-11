@@ -1,0 +1,54 @@
+<head>
+  <title>Haiku Generator</title>
+    <!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+
+<!-- CSS Reset -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+
+<!-- Milligram CSS minified -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.0.3/milligram.min.css">
+</head>
+ 
+<body>
+  <div class="container">
+    <header>
+      <h1>Haiku Lines Manager</h1>
+        
+        <form class="new-line">
+            <input type="text" name="text" placeholder="Type to add new tasks" />
+        </form>
+        
+    </header>
+ 
+    <ul>
+      {{#each lines}}
+        {{> line}}
+      {{/each}}
+    </ul>
+      
+      <h1>Random Lines</h1>
+      
+          <ul>
+      {{#each randLines}}
+        {{> randLine}}
+      {{/each}}
+    </ul>
+      
+      
+  </div>
+</body>
+ 
+<template name="line">
+  <li class="{{#if checked}}checked{{/if}}">
+    <button class="delete">&times;</button>
+ 
+    <span class="text">{{text}}</span>
+  </li>
+</template>
+
+<template name="randLine">
+  <li class="">
+    <span class="text">{{text}}</span>
+  </li>
+</template>
