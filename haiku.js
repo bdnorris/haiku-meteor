@@ -46,27 +46,28 @@ if (Meteor.isClient) {
             //limit(3).skip(r);
         },
         
-        randLines: [
-            { text: function() {
-                
-                var n = HaikuLines.find({});
-                    var c = n.count();
-                    var r = Math.floor(Math.random() * c);
-                    var z = HaikuLines.find({}, {skip: r, limit: 1});
-                console.log(z);
-                return z;
-                
-            }
-            },
-            { text: "This is task 2" },
-            { text: "This is task 3" }
-        ]
+        randLines: function() {
+            var myArr = HaikuLines.find({}, {text:1, _id:0});   
+            var arr = Object.values(myArr);
+            console.log(arr);
+            return myArr;
+            
+        }
+        
+
+    
         
         // Lets instead, make two arrays, one for all of the 5 syl and one for all of the 2 syl on load.
         
         
         
     });
+    
+
+    
+    
+    
+    
     
     // Event Handler
     // Template . templateName . events 
