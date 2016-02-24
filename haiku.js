@@ -2,13 +2,20 @@ HaikuLines = new Mongo.Collection("lines");
 
 if (Meteor.isClient) {
     // This code only runs on the client
+    
+    //var a = HaikuLines.find({}, {}, {});
+    //var a = HaikuLines.findOne({}, {rnd:{ $gte: Math.random() }}, {$orderby: { rnd: 1 }});
+    var a = HaikuLines.find({rnd:{$gte: Math.random()}}, {limit: 3}, {});
+    
+    //console.log(a.collection.queries[1].results[0]);
+    
     Template.body.helpers({
         lines: function() {
             return HaikuLines.find({}, {sort: {createdAt: -1}});
         },
-        rand: function() {
+        randLines: function() {
             //return HaikuLines.findOne({}, {rnd:{ $gte: Math.random() }}, {$orderby: { rnd: 1 }});
-            //return HaikuLines.find({rnd:{$gte: Math.random()}}, {limit: 1}, {});
+            
             
             //var query = { state: 'OK' };
             //n = HaikuLines.count({});
@@ -17,15 +24,15 @@ if (Meteor.isClient) {
             //return HaikuLines.find(query).limit(1).skip(r);
             //function getThreeLines() {
                
-                    var n = HaikuLines.find({});
-                    var c = n.count();
-                    var r = Math.floor(Math.random() * c);
-                    var z = HaikuLines.find({}, {skip: r, limit: 1});
-               
-  return "hello";
-                   // var hello = [z, "one", "two"];
+                    //var a = HaikuLines.find({}, {}, {});
+                    //console.log(a.collection.queries[1].results[0]);
+                    return a;
             
             
+            
+              //  for each (lines in a) {
+                //    console.log(line);
+                //}
             
             
                 
@@ -46,13 +53,13 @@ if (Meteor.isClient) {
             //limit(3).skip(r);
         },
         
-        randLines: function() {
+       /* randLines: function() {
             var myArr = HaikuLines.find({}, {text:1, _id:0});   
             var arr = Object.values(myArr);
             console.log(arr);
             return myArr;
             
-        }
+        }*/
         
 
     
