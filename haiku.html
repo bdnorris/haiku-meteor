@@ -17,7 +17,11 @@
         
         <form class="new-line">
             <input type="text" name="text" placeholder="Type to add new tasks" />
+            <input type="radio" name="syl" value="5"> 5
+            <input type="radio" name="syl" value="7"> 7
+            <button type="submit">Submit</button>
         </form>
+        
         
     </header>
  
@@ -43,12 +47,12 @@
   <li class="{{#if checked}}checked{{/if}}">
     <button class="delete">&times;</button>
  
-    <span class="text">{{text}}</span>
+    <span class="text">{{text}} - {{syl}}</span>
   </li>
 </template>
 
 <template name="randLine">
   <li class="">
-    <span class="text">{{text}}</span>
+    <span class="text">{{text}} - {{syl}}</span>
   </li>
 </template>

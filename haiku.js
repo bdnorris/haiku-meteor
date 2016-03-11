@@ -79,7 +79,7 @@ if (Meteor.isClient) {
     // Event Handler
     // Template . templateName . events 
     Template.body.events({
-        "submit .new-line": function(event) {
+        "submit .new-line": function(event, syl) {
             // Prevent default browser form submit
             event.preventDefault();
             
@@ -87,6 +87,8 @@ if (Meteor.isClient) {
             // event.target is the form element and 
             // text.value gets the value
             var text = event.target.text.value;
+            var syl = event.target.syl.value;
+            //var syl = syl.target.text.value;
             //console.log(event);
             
             // Insert a task into the collection 
@@ -94,7 +96,8 @@ if (Meteor.isClient) {
             HaikuLines.insert({
                 text: text,
                 createdAt: new Date(), // current time
-                rnd: Math.random()
+                rnd: Math.random(),
+                syl: syl
                 //_id: i
             });
             
