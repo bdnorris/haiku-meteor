@@ -1,16 +1,24 @@
 HaikuLines = new Mongo.Collection("lines");
 
+
+
 if (Meteor.isClient) {
-    
-    var a = HaikuLines.find({rnd:{$gte: Math.random()}}, {limit: 3}, {});
     
     Template.body.helpers({
         lines: function() {
             return HaikuLines.find({}, {sort: {createdAt: -1}});
         },
-        randLines: function() {
-            return a;
+        'randLinesFive' : function () {
+            //var fives = HaikuLines.findOne({syl: "5"});
+            //console.log(fives.length);
+            var fives = HaikuLines.findOne({syl:"5"}, {rnd:{ $gte: Math.random() }},);
+            console.log(fives);
+            return fives;
         },
+        'randLinesSeven' : function () {
+            return HaikuLines.find({syl: "7"}).fetch();
+        },
+        
     });
 
     Template.body.events({
@@ -45,8 +53,12 @@ if (Meteor.isClient) {
         },
     });
 
-    Template.randLine.events ({
+    /*Template.randLine.events ({
         
-    });
+    });*/
     
+  
 }
+
+
+

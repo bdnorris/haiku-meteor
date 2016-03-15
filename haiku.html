@@ -8,6 +8,8 @@
 
 <!-- Milligram CSS minified -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.0.3/milligram.min.css">
+
+<!--<script type="text/javascript" src="app.js"></script>-->    
 </head>
  
 <body>
@@ -21,7 +23,7 @@
             <input type="radio" name="syl" value="7"> 7
             <button type="submit">Submit</button>
         </form>
-        
+            
         
     </header>
  
@@ -31,13 +33,37 @@
       {{/each}}
     </ul>
       
-      <h1>Random Lines</h1>
+      
+      <ul>
+ {{#if randLinesFive}}
+    {{randLinesFive.text}}
+{{/if}}
+    </ul>
+      
+
+      
+    <div id="vardump"></div>
+      
+      
+
+      <!--
+      
+      <h4>Random Lines 5</h4>
       
           <ul>
-      {{#each randLines}}
-        {{> randLine}}
+      {{#each randLinesFive}}
+        {{> randLine5}}
       {{/each}}
     </ul>
+      
+      <h4>Random Lines 7</h4>
+         <ul>
+      {{#each randLinesSeven}}
+        {{> randLine7}}
+      {{/each}}
+    </ul>
+
+-->
       
       
   </div>
@@ -51,8 +77,17 @@
   </li>
 </template>
 
-<template name="randLine">
+
+
+
+
+<!--<template name="randLine5">
   <li class="">
     <span class="text">{{text}} - {{syl}}</span>
   </li>
 </template>
+<template name="randLine7">
+  <li class="">
+    <span class="text">{{text}} - {{syl}}</span>
+  </li>
+</template>-->
