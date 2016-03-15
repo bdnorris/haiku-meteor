@@ -11,12 +11,17 @@ if (Meteor.isClient) {
         'randLinesFive' : function () {
             //var fives = HaikuLines.findOne({syl: "5"});
             //console.log(fives.length);
-            var fives = HaikuLines.findOne({syl:"5"}, {rnd:{ $gte: Math.random() }},);
-            console.log(fives);
-            return fives;
+            //r = Math.random();
+            //var fives = HaikuLines.findOne({syl:"5"}, {rnd:{ $gt: r }});
+            var fives = HaikuLines.find({syl:"5"}).fetch();
+            var fivesIndex = Math.floor( Math.random() * fives.length );
+            return fives[fivesIndex];
         },
         'randLinesSeven' : function () {
-            return HaikuLines.find({syl: "7"}).fetch();
+            //return HaikuLines.find({syl: "7"}).fetch();
+            var sevens = HaikuLines.find({syl:"7"}).fetch();
+            var sevensIndex = Math.floor( Math.random() * sevens.length );
+            return sevens[sevensIndex];
         },
         
     });
