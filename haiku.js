@@ -4,6 +4,21 @@ HaikuLines = new Mongo.Collection("lines");
 
 if (Meteor.isClient) {
     
+    function randLinesFunc(syll) {
+        var myLines = HaikuLines.find({syl:syll}).fetch();
+            var myLinesIndex = Math.floor( Math.random() * myLines.length );
+            return myLines[myLinesIndex];
+    }
+    /*function randLinesSevenFunc() {
+        var sevens = HaikuLines.find({syl:"7"}).fetch();
+            var sevensIndex = Math.floor( Math.random() * sevens.length );
+            return sevens[sevensIndex];
+    }*/
+
+    var randLinesDep = new Tracker.Dependency;
+    var randLinesFiveDep = new Tracker.Dependency;
+    var randLinesSevenDep = new Tracker.Dependency;
+    
     Template.body.helpers({
         lines: function() {
             return HaikuLines.find({}, {sort: {createdAt: -1}});
@@ -13,15 +28,15 @@ if (Meteor.isClient) {
             //console.log(fives.length);
             //r = Math.random();
             //var fives = HaikuLines.findOne({syl:"5"}, {rnd:{ $gt: r }});
-            var fives = HaikuLines.find({syl:"5"}).fetch();
-            var fivesIndex = Math.floor( Math.random() * fives.length );
-            return fives[fivesIndex];
+            randLinesDep.depend();
+            randLinesFiveDep.depend();
+            return randLinesFunc("5");
         },
         'randLinesSeven' : function () {
             //return HaikuLines.find({syl: "7"}).fetch();
-            var sevens = HaikuLines.find({syl:"7"}).fetch();
-            var sevensIndex = Math.floor( Math.random() * sevens.length );
-            return sevens[sevensIndex];
+            randLinesDep.depend();
+            randLinesSevenDep.depend();
+            return randLinesFunc("7");
         },
         
     });
@@ -49,14 +64,25 @@ if (Meteor.isClient) {
             
             // Clear form
             event.target.text.value = "";
-        }
+        },
+        "click .reload": function () {
+            randLinesDep.changed();
+        },
+        "click .seven": function () {
+            randLinesSevenDep.changed();
+            console.log(this);
+        },
+        "click .five": function () {
+            randLinesFiveDep.changed();
+        },
     });
     
     Template.line.events({
         "click .delete": function () {
-          HaikuLines.remove(this._id);
+            HaikuLines.remove(this._id);
         },
     });
+    
 
     /*Template.randLine.events ({
         
