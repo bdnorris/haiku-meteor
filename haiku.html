@@ -16,17 +16,15 @@
   <div class="container">
     <header>
       <h1>Haiku Lines Manager</h1>
-        
-        <form class="new-line">
-            <input type="text" name="text" placeholder="Type to add new tasks" />
-            <input type="radio" name="syl" value="5"> 5
-            <input type="radio" name="syl" value="7"> 7
-            <button type="submit">Submit</button>
-        </form>
-            
-        
     </header>
- 
+      
+    <form class="new-line">
+        <input type="text" name="text" placeholder="Type to add new tasks" />
+        <input type="radio" name="syl" value="5"> 5
+        <input type="radio" name="syl" value="7"> 7
+        <button type="submit">Submit</button>
+    </form>
+
     <ul>
       {{#each lines}}
         {{> line}}
@@ -34,24 +32,27 @@
     </ul>
       
       
-      <ul>
- {{#if randLinesFive}}
-    <a class="five">{{randLinesFive.text}}</a>
-{{/if}}
-    </ul>
-      <ul>
- {{#if randLinesSeven}}
-          <a class="seven">{{randLinesSeven.text}}</a>
-{{/if}}
-    </ul>
-            <ul>
- {{#if randLinesFive}}
-                <a class="five">{{randLinesFive.text}}</a>
-{{/if}}
+      
+      
+    <header>
+      <h1>Random Haiku</h1>
+    </header>
+      
+    <ul>
+        {{#if randLinesFive1}}
+        <li><a href="#" class="five1">{{randLinesFive1.text}}</a></li>
+        {{/if}}
+
+        {{#if randLinesSeven}}
+        <li><a href="#" class="seven">{{randLinesSeven.text}}</a></li>
+        {{/if}}
+
+        {{#if randLinesFive2}}
+        <li><a href="#" class="five2">{{randLinesFive2.text}}</a></li>
+        {{/if}}
     </ul>
       
-
-      <button class="reload">Reload</button>
+    <button class="reload">Reload</button>
       
 
       <!--

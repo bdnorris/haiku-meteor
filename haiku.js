@@ -16,20 +16,30 @@ if (Meteor.isClient) {
     }*/
 
     var randLinesDep = new Tracker.Dependency;
-    var randLinesFiveDep = new Tracker.Dependency;
+    var randLinesFive1Dep = new Tracker.Dependency;
+    var randLinesFive2Dep = new Tracker.Dependency;
     var randLinesSevenDep = new Tracker.Dependency;
     
     Template.body.helpers({
         lines: function() {
             return HaikuLines.find({}, {sort: {createdAt: -1}});
         },
-        'randLinesFive' : function () {
+        'randLinesFive1' : function () {
             //var fives = HaikuLines.findOne({syl: "5"});
             //console.log(fives.length);
             //r = Math.random();
             //var fives = HaikuLines.findOne({syl:"5"}, {rnd:{ $gt: r }});
             randLinesDep.depend();
-            randLinesFiveDep.depend();
+            randLinesFive1Dep.depend();
+            return randLinesFunc("5");
+        },
+        'randLinesFive2' : function () {
+            //var fives = HaikuLines.findOne({syl: "5"});
+            //console.log(fives.length);
+            //r = Math.random();
+            //var fives = HaikuLines.findOne({syl:"5"}, {rnd:{ $gt: r }});
+            randLinesDep.depend();
+            randLinesFive2Dep.depend();
             return randLinesFunc("5");
         },
         'randLinesSeven' : function () {
@@ -68,12 +78,17 @@ if (Meteor.isClient) {
         "click .reload": function () {
             randLinesDep.changed();
         },
-        "click .seven": function () {
+        "click .seven": function (event) {
+            event.preventDefault();
             randLinesSevenDep.changed();
-            console.log(this);
         },
-        "click .five": function () {
-            randLinesFiveDep.changed();
+        "click .five1": function (event) {
+            event.preventDefault();
+            randLinesFive1Dep.changed();
+        },
+        "click .five2": function (event) {
+            event.preventDefault();
+            randLinesFive2Dep.changed();
         },
     });
     
