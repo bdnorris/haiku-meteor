@@ -14,25 +14,14 @@
  
 <body>
   <div class="container">
-    <header>
-      <h1>Haiku Lines Manager</h1>
-    </header>
       
-    <form class="new-line">
-        <input type="text" name="text" placeholder="Type to add new tasks" />
-        <input type="radio" name="syl" value="5"> 5
-        <input type="radio" name="syl" value="7"> 7
-        <button type="submit">Submit</button>
-    </form>
+      
 
-    <ul>
-      {{#each lines}}
-        {{> line}}
-      {{/each}}
-    </ul>
+      
+    
       
       
-      
+      <!--
       
     <header>
       <h1>Random Haiku</h1>
@@ -55,7 +44,7 @@
     <button class="reload">Reload</button>
       
 
-      <!--
+      
       
       <h4>Random Lines 5</h4>
       
@@ -77,7 +66,60 @@
       
   </div>
 </body>
+
+<template name="homeLayout">
+    
+    {{> Template.dynamic template=random}}
+    
+        <header>
+      <h1>Random Haiku</h1>
+    </header>
+      
+    <ul>
+        {{#if randLinesFive1}}
+        <li><a href="#" class="five1">{{randLinesFive1.text}}</a></li>
+        {{/if}}
+
+        {{#if randLinesSeven}}
+        <li><a href="#" class="seven">{{randLinesSeven.text}}</a></li>
+        {{/if}}
+
+        {{#if randLinesFive2}}
+        <li><a href="#" class="five2">{{randLinesFive2.text}}</a></li>
+        {{/if}}
+    </ul>
+      
+    <button class="reload">Reload</button>
+
+</template>
+
  
+<template name="adminLayout">
+    
+    {{> Template.dynamic template=main}}
+          
+    <header>
+      <h3>Haiku Lines Manager</h3>
+    </header>
+      
+    <form class="new-line">
+        <input type="text" name="text" placeholder="Type to add new tasks" />
+        <input type="radio" name="syl" value="5"> 5
+        <input type="radio" name="syl" value="7"> 7
+        <button type="submit">Submit</button>
+    </form>
+
+    <h4>Lines</h4>
+    <ul>
+      {{#each lines}}
+        {{> line}}
+      {{/each}}
+    </ul>
+          
+          
+</template>
+
+
 <template name="line">
   <li class="{{#if checked}}checked{{/if}}">
     <button class="delete">&times;</button>
@@ -85,9 +127,6 @@
     <span class="text">{{text}} - {{syl}}</span>
   </li>
 </template>
-
-
-
 
 
 <!--<template name="randLine5">
