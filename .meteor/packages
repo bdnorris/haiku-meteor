@@ -21,3 +21,6 @@ kadira:flow-router
 kadira:blaze-layout
 standard-minifier-css
 standard-minifier-js
+useraccounts:flow-routing
+useraccounts:unstyled
+accounts-password
