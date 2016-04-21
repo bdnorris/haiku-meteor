@@ -9,24 +9,26 @@
 <!-- Milligram CSS minified -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.0.3/milligram.min.css">
 
-<!--<script type="text/javascript" src="app.js"></script>-->    
+<!--<script type="text/javascript" src="app.js"></script>-->
 </head>
- 
+
 <body>
   <div class="container">
-      
-      
 
-      
-    
-      
-      
+      <nav>
+        <a href="/">home</a>
+        <a href="/admin">admin</a>
+      </nav>
+
+
+
+
       <!--
-      
+
     <header>
       <h1>Random Haiku</h1>
     </header>
-      
+
     <ul>
         {{#if randLinesFive1}}
         <li><a href="#" class="five1">{{randLinesFive1.text}}</a></li>
@@ -40,20 +42,20 @@
         <li><a href="#" class="five2">{{randLinesFive2.text}}</a></li>
         {{/if}}
     </ul>
-      
-    <button class="reload">Reload</button>
-      
 
-      
-      
+    <button class="reload">Reload</button>
+
+
+
+
       <h4>Random Lines 5</h4>
-      
+
           <ul>
       {{#each randLinesFive}}
         {{> randLine5}}
       {{/each}}
     </ul>
-      
+
       <h4>Random Lines 7</h4>
          <ul>
       {{#each randLinesSeven}}
@@ -62,19 +64,19 @@
     </ul>
 
 -->
-      
-      
+
+
   </div>
 </body>
 
 <template name="homeLayout">
-    
+
     {{> Template.dynamic template=random}}
-    
+
         <header>
       <h1>Random Haiku</h1>
     </header>
-      
+
     <ul>
         {{#if randLinesFive1}}
         <li><a href="#" class="five1">{{randLinesFive1.text}}</a></li>
@@ -88,20 +90,20 @@
         <li><a href="#" class="five2">{{randLinesFive2.text}}</a></li>
         {{/if}}
     </ul>
-      
+
     <button class="reload">Reload</button>
 
 </template>
 
- 
+
 <template name="adminLayout">
-    
+
     {{> Template.dynamic template=main}}
-          
+
     <header>
       <h3>Haiku Lines Manager</h3>
     </header>
-      
+
     <form class="new-line">
         <input type="text" name="text" placeholder="Type to add new tasks" />
         <input type="radio" name="syl" value="5"> 5
@@ -115,15 +117,15 @@
         {{> line}}
       {{/each}}
     </ul>
-          
-          
+
+
 </template>
 
 
 <template name="line">
   <li class="{{#if checked}}checked{{/if}}">
     <button class="delete">&times;</button>
- 
+
     <span class="text">{{text}} - {{syl}}</span>
   </li>
 </template>
