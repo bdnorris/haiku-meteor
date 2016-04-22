@@ -15,67 +15,36 @@
 <body>
   <div class="container">
 
-      <nav>
-        <a href="/">home</a>
-        <a href="/admin">admin</a>
-      </nav>
-
-
-
-
-      <!--
-
-    <header>
-      <h1>Random Haiku</h1>
-    </header>
-
-    <ul>
-        {{#if randLinesFive1}}
-        <li><a href="#" class="five1">{{randLinesFive1.text}}</a></li>
-        {{/if}}
-
-        {{#if randLinesSeven}}
-        <li><a href="#" class="seven">{{randLinesSeven.text}}</a></li>
-        {{/if}}
-
-        {{#if randLinesFive2}}
-        <li><a href="#" class="five2">{{randLinesFive2.text}}</a></li>
-        {{/if}}
-    </ul>
-
-    <button class="reload">Reload</button>
-
-
-
-
-      <h4>Random Lines 5</h4>
-
-          <ul>
-      {{#each randLinesFive}}
-        {{> randLine5}}
-      {{/each}}
-    </ul>
-
-      <h4>Random Lines 7</h4>
-         <ul>
-      {{#each randLinesSeven}}
-        {{> randLine7}}
-      {{/each}}
-    </ul>
-
--->
-
 
   </div>
 </body>
 
+
+<template name="defaultLayout">
+  {{> Template.dynamic template=nav}}
+  {{> Template.dynamic template=main}}
+  {{> Template.dynamic template=footer}}
+</template>
+
+<template name="nav">
+  <nav>
+      <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/admin">Admin</a></li>
+          <li><a href="/login">Log-In</a></li>
+      </ul>
+  </nav>
+</template>
+
+<template name="footer">
+  <footer>footer</footer>
+</template>
+
 <template name="homeLayout">
 
-    {{> Template.dynamic template=random}}
-
-        <header>
+    <div>
       <h1>Random Haiku</h1>
-    </header>
+    </div>
 
     <ul>
         {{#if randLinesFive1}}
@@ -98,8 +67,6 @@
 
 <template name="adminLayout">
 
-    {{> Template.dynamic template=main}}
-
     <header>
       <h3>Haiku Lines Manager</h3>
     </header>
@@ -118,7 +85,6 @@
       {{/each}}
     </ul>
 
-
 </template>
 
 
@@ -129,15 +95,3 @@
     <span class="text">{{text}} - {{syl}}</span>
   </li>
 </template>
-
-
-<!--<template name="randLine5">
-  <li class="">
-    <span class="text">{{text}} - {{syl}}</span>
-  </li>
-</template>
-<template name="randLine7">
-  <li class="">
-    <span class="text">{{text}} - {{syl}}</span>
-  </li>
-</template>-->
