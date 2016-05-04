@@ -73,6 +73,7 @@ if (Meteor.isClient) {
     */
 
     Template.nav.events({
+      // deprecated this event
       "click #log-out": function (e) {
           e.preventDefault();
           AccountsTemplates.logout();
