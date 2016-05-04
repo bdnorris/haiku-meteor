@@ -10,7 +10,9 @@ if (Meteor.isClient) {
         nav: 'nav',
         footer: 'footer'
     },
-    defaultContentRegion: 'container'
+    defaultContentRegion: 'container',
+    // comment out this next line or change to false to register new accounts
+    forbidClientAccountCreation: true
     });
 
     function randLinesFunc(syll) {
@@ -70,11 +72,20 @@ if (Meteor.isClient) {
     ########    ###    ######## ##    ##    ##     ######
     */
 
+    Template.nav.events({
+      "click #log-out": function (e) {
+          e.preventDefault();
+          AccountsTemplates.logout();
+          Meteor.logout();
+      },
+    });
+
     Template.homeLayout.events({
 
         "click .reload": function () {
             randLinesDep.changed();
         },
+
 
 
         "click .five1": function (event) {
