@@ -12,7 +12,7 @@ if (Meteor.isClient) {
     },
     defaultContentRegion: 'container',
     // comment out this next line or change to false to register new accounts
-    forbidClientAccountCreation: true
+    //forbidClientAccountCreation: true
     });
 
     function randLinesFunc(syll) {
@@ -58,8 +58,9 @@ if (Meteor.isClient) {
 
     Template.adminLayout.helpers({
         lines: function() {
-          var currUser = Meteor.user().emails[0].address
-          if (currUser = 'bdnorris@gmail.com') {
+          var currUser = Meteor.user().emails[0].address;
+          var superAdmin = Meteor.user().superAdmin;
+          if (superAdmin = 1) {
             return HaikuLines.find({}, {sort: {createdAt: -1}});
           }
           else {
@@ -67,6 +68,9 @@ if (Meteor.isClient) {
           }
         },
     });
+
+    // ADDING SUPERADMIN EXAMPLE from MONGO CONSOLE
+    //db.users.update({_id: "qH84gvYiYoc2veNEr"}, {$set: {superAdmin: 1}})
 
     /*
     ######## ##     ## ######## ##    ## ########  ######
