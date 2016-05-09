@@ -58,7 +58,13 @@ if (Meteor.isClient) {
 
     Template.adminLayout.helpers({
         lines: function() {
+          var currUser = Meteor.user().emails[0].address
+          if (currUser = 'bdnorris@gmail.com') {
             return HaikuLines.find({}, {sort: {createdAt: -1}});
+          }
+          else {
+            return HaikuLines.find({user: currUser}, {sort: {createdAt: -1}});
+          }
         },
     });
 
@@ -86,8 +92,6 @@ if (Meteor.isClient) {
         "click .reload": function () {
             randLinesDep.changed();
         },
-
-
 
         "click .five1": function (event) {
             event.preventDefault();
@@ -120,7 +124,8 @@ if (Meteor.isClient) {
                 text: text,
                 createdAt: new Date(), // current time
                 rnd: Math.random(),
-                syl: syl
+                syl: syl,
+                user: Meteor.user().emails[0].address,
                 //_id: i
             });
 
