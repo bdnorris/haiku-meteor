@@ -26,6 +26,8 @@ if (Meteor.isClient) {
     var randLinesFive2Dep = new Tracker.Dependency;
     var randLinesSevenDep = new Tracker.Dependency;
 
+
+
     /*
     ##     ## ######## ##       ########  ######## ########   ######
     ##     ## ##       ##       ##     ## ##       ##     ## ##    ##
@@ -59,15 +61,19 @@ if (Meteor.isClient) {
     Template.adminLayout.helpers({
         lines: function() {
           var currUser = Meteor.user().emails[0].address;
-          var superAdmin = Meteor.user().superAdmin;
-          if (superAdmin == 1) {
+          console.log(Meteor.user().emails[0].address);
+          console.log(Meteor.user().superAdmin);
+          //var superAdmin = Meteor.user().superAdmin;
+          /*if (superAdmin == 1) {
             return HaikuLines.find({}, {sort: {createdAt: -1}});
           }
           else {
             return HaikuLines.find({user: currUser}, {sort: {createdAt: -1}});
-          }
+          }*/
         },
     });
+
+
 
     // ADDING SUPERADMIN EXAMPLE from MONGO CONSOLE
     //db.users.update({_id: "qH84gvYiYoc2veNEr"}, {$set: {superAdmin: 1}})
