@@ -85,9 +85,7 @@
     <h4>Lines</h4>
     <ul>
       {{#each lines}}
-      <li class="{{#if checked}}checked{{/if}}">
-        {{> line}} / {{#if admin}}{{user}}{{/if}}
-      </li>
+        {{> line}}
       {{/each}}
     </ul>
 
@@ -95,10 +93,10 @@
 
 
 <template name="line">
-
+  <li class="{{#if checked}}checked{{/if}}">
     <button class="delete">&times;</button>
-    <span class="text">{{text}} - {{syl}}</span>
-
+    <span class="text">{{text}} - {{syl}} / {{user}}</span>
+  </li>
 </template>
 
 
