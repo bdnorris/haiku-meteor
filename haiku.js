@@ -61,15 +61,15 @@ if (Meteor.isClient) {
     Template.adminLayout.helpers({
         lines: function() {
           var currUser = Meteor.user().emails[0].address;
-          console.log(Meteor.user().emails[0].address);
-          console.log(Meteor.user().superAdmin);
+          //console.log(Meteor.user().emails[0].address);
+          //console.log(Meteor.user().superAdmin);
           //var superAdmin = Meteor.user().superAdmin;
-          /*if (superAdmin == 1) {
+          if (currUser == 'bdnorris@gmail.com') {
             return HaikuLines.find({}, {sort: {createdAt: -1}});
           }
           else {
             return HaikuLines.find({user: currUser}, {sort: {createdAt: -1}});
-          }*/
+          }
         },
     });
 
