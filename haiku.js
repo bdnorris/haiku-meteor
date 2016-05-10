@@ -38,6 +38,16 @@ if (Meteor.isClient) {
 
     //Template.defaultLayout.helpers({});
 
+
+
+    Template.registerHelper( 'admin', () => {
+      let superAdmin = Meteor.user().superAdmin;
+
+      if ( superAdmin = 1 ) {
+        return true;
+      }
+    });
+
     Template.homeLayout.helpers({
         'randLinesFive1' : function () {
             randLinesDep.depend();
@@ -58,8 +68,8 @@ if (Meteor.isClient) {
 
     Template.adminLayout.helpers({
         lines: function() {
-          var currUser = Meteor.user().emails[0].address;
           var superAdmin = Meteor.user().superAdmin;
+          var currUser = Meteor.user().emails[0].address;
           if (superAdmin = 1) {
             return HaikuLines.find({}, {sort: {createdAt: -1}});
           }
