@@ -26,6 +26,24 @@ if (Meteor.isClient) {
     var randLinesFive2Dep = new Tracker.Dependency;
     var randLinesSevenDep = new Tracker.Dependency;
 
+    isSuperAdmin = function() {
+      if (Meteor.user().emails[0].superAdmin === 1) {
+        return true
+      }
+      else {
+        return false
+      }
+    }
+    // ADDING SUPERADMIN EXAMPLE from MONGO CONSOLE
+    /*
+    db.users.update(
+    {_id: "qH84gvYiYoc2veNEr"},
+    {
+    	$set: {
+    		emails: [{ address: "bdnorris@gmail.com", superAdmin: 1 }]
+    		}
+    })
+    */
 
 
     /*
@@ -39,6 +57,14 @@ if (Meteor.isClient) {
     */
 
     //Template.defaultLayout.helpers({});
+    Template.registerHelper( 'admin', () => {
+      let superAdmin = isSuperAdmin();
+
+      if ( superAdmin === true ) {
+        return true;
+      }
+    });
+
 
     Template.homeLayout.helpers({
         'randLinesFive1' : function () {
@@ -64,19 +90,20 @@ if (Meteor.isClient) {
           //console.log(Meteor.user().emails[0].address);
           //console.log(Meteor.user().superAdmin);
           //var superAdmin = Meteor.user().superAdmin;
-          if (currUser == 'bdnorris@gmail.com') {
+          if (isSuperAdmin() === true) {
+            //alert("isSuperAdmin is true "+currUser);
             return HaikuLines.find({}, {sort: {createdAt: -1}});
           }
-          else {
+          else if (isSuperAdmin() === false) {
+            //alert("isSuperAdmin is false "+currUser);
             return HaikuLines.find({user: currUser}, {sort: {createdAt: -1}});
+          }
+          else {
+            alert('error');
           }
         },
     });
 
-
-
-    // ADDING SUPERADMIN EXAMPLE from MONGO CONSOLE
-    //db.users.update({_id: "qH84gvYiYoc2veNEr"}, {$set: {superAdmin: 1}})
 
     /*
     ######## ##     ## ######## ##    ## ########  ######

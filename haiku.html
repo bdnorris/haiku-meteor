@@ -95,7 +95,7 @@
 <template name="line">
   <li class="{{#if checked}}checked{{/if}}">
     <button class="delete">&times;</button>
-    <span class="text">{{text}} - {{syl}} / {{user}}</span>
+    <span class="text">{{text}} - {{syl}} {{#if admin}}/ {{user}}{{/if}}</span>
   </li>
 </template>
 
