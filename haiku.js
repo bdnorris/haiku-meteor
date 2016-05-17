@@ -141,25 +141,27 @@ if (Meteor.isClient) {
 
     Template.adminLayout.events({
         "click .delete": function () {
-            HaikuLines.remove(this._id);
+            //HaikuLines.remove(this._id);
+            Meteor.call('tasks.remove', this._id);
         },
-        "submit .new-line": function(event, syl) {
+        "submit .new-line": function(event) {
             // Prevent default browser form submit
             event.preventDefault();
 
-            var text = event.target.text.value;
-            var syl = event.target.syl.value;
-
+            const text = event.target.text.value;
+            const syl = event.target.syl.value;
+            const info = [text, syl]
             // Insert a task into the collection
             // Tasks is the Mongo.Collection("tasks")
-            HaikuLines.insert({
+            /*HaikuLines.insert({
                 text: text,
                 createdAt: new Date(), // current time
                 rnd: Math.random(),
                 syl: syl,
                 user: Meteor.user().emails[0].address,
-                //_id: i
-            });
+            });*/
+            alert(text + syl);
+            Meteor.call('tasks.insert', info);
 
             // Clear form
             event.target.text.value = "";
