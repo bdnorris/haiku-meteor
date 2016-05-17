@@ -87,15 +87,10 @@ if (Meteor.isClient) {
     Template.adminLayout.helpers({
         lines: function() {
           var currUser = Meteor.user().emails[0].address;
-          //console.log(Meteor.user().emails[0].address);
-          //console.log(Meteor.user().superAdmin);
-          //var superAdmin = Meteor.user().superAdmin;
           if (isSuperAdmin() === true) {
-            //alert("isSuperAdmin is true "+currUser);
             return HaikuLines.find({}, {sort: {createdAt: -1}});
           }
           else if (isSuperAdmin() === false) {
-            //alert("isSuperAdmin is false "+currUser);
             return HaikuLines.find({user: currUser}, {sort: {createdAt: -1}});
           }
           else {
