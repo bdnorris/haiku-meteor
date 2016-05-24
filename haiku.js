@@ -1,4 +1,5 @@
 HaikuLines = new Mongo.Collection("lines");
+import { Tasks } from './lib/tasks.js';
 
 if (Meteor.isClient) {
 
@@ -142,7 +143,7 @@ if (Meteor.isClient) {
     Template.adminLayout.events({
         "click .delete": function () {
             //HaikuLines.remove(this._id);
-            Meteor.call('tasks.remove', this._id);
+            Meteor.call('HaikuLines.remove', this._id);
         },
         "submit .new-line": function(event) {
             // Prevent default browser form submit
@@ -150,7 +151,7 @@ if (Meteor.isClient) {
 
             const text = event.target.text.value;
             const syl = event.target.syl.value;
-            const info = [text, syl]
+
             // Insert a task into the collection
             // Tasks is the Mongo.Collection("tasks")
             /*HaikuLines.insert({
@@ -160,8 +161,8 @@ if (Meteor.isClient) {
                 syl: syl,
                 user: Meteor.user().emails[0].address,
             });*/
-            alert(text + syl);
-            Meteor.call('tasks.insert', info);
+            //alert(text + " " + syl);
+            Meteor.call('HaikuLines.insert', text, syl);
 
             // Clear form
             event.target.text.value = "";
