@@ -6,15 +6,24 @@ body
 .new-line
   //@include display(flex)
   input
-    @include flex(3)
+    //@include flex(3)
     margin: 0 1em 0 0
-  select
-    @include flex(1)
-    margin: 0 1em 0 0
-  button
-    @include flex(1)
+  label
+    font-weight: lighter
+    margin: 0.2em 0 0 0
+  div
+    @include display(flex)
+    @include align-items(flex-end)
+    label
+      @include flex(1)
+      margin: 0.2em 1em 0 0
+    select
+      margin: 0
+    button
+      @include flex(2)
+      margin: 0 0 0 0
 
 // DESKTOP
 @media only screen and (min-width:480px)
   .new-line
-    @include display(flex)
+    //@include display(flex)
