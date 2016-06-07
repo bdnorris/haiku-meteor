@@ -1,6 +1,24 @@
 body {
   padding: 2vw; }
 
+ul#admin-lines {
+  list-style: none; }
+  ul#admin-lines li {
+    display: block; }
+    ul#admin-lines li button.delete {
+      padding: 0 1.5rem 2rem 1.5rem;
+      font-size: 2rem;
+      display: inline-block; }
+    ul#admin-lines li div.text {
+      display: inline-block; }
+      ul#admin-lines li div.text span.syllable {
+        margin: 0 1em;
+        font-weight: 600;
+        color: #9b4dca; }
+    ul#admin-lines li div.author {
+      display: inline-block;
+      color: #cccccc; }
+
 .new-line input {
   margin: 0 1em 0 0; }
 

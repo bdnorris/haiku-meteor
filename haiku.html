@@ -9,7 +9,6 @@
 <!-- Milligram CSS minified -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.0.3/milligram.min.css">
 
-<!--<script type="text/javascript" src="app.js"></script>-->
 </head>
 
 <body>
@@ -91,7 +90,7 @@
     </form>
 
     <h4>Lines</h4>
-    <ul>
+    <ul id="admin-lines">
       {{#each lines}}
         {{> line}}
       {{/each}}
@@ -101,9 +100,10 @@
 
 
 <template name="line">
-  <li class="{{#if checked}}checked{{/if}}">
+  <li>
     <button class="delete">&times;</button>
-    <span class="text">{{text}} - {{syl}} {{#if admin}}/ {{user}}{{/if}}</span>
+    <div class="text">{{text}} <span class="syllable">{{syl}}</span></div>
+    {{#if admin}}<div class="author">{{user}}</div>{{/if}}
   </li>
 </template>
 
