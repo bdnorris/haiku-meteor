@@ -1,6 +1,35 @@
 body {
   padding: 2vw; }
 
+section#main-wrap {
+  text-align: center;
+  width: 100%;
+  padding-top: 10vw; }
+  section#main-wrap ul#main-random {
+    list-style: none;
+    text-align: center; }
+    section#main-wrap ul#main-random li {
+      font-size: 3rem;
+      text-transform: uppercase;
+      letter-spacing: 1px; }
+      section#main-wrap ul#main-random li a {
+        font-weight: 400;
+        -webkit-transition: all;
+        -moz-transition: all;
+        transition: all; }
+        section#main-wrap ul#main-random li a:hover {
+          font-weight: 600; }
+  section#main-wrap button.reload {
+    width: 20vw;
+    margin: 0 auto; }
+
+nav ul {
+  list-style: none; }
+  nav ul li {
+    display: inline-block; }
+  nav ul li.log a {
+    cursor: pointer; }
+
 ul#admin-lines {
   list-style: none; }
   ul#admin-lines li {

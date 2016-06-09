@@ -5,6 +5,41 @@ $purple:  #9b4dca
 
 body
   padding: 2vw
+  //font-family: "jaf-domus-titling-web", sans-serif
+  //font-weight: 500
+
+section#main-wrap
+  text-align: center
+  width: 100%
+  padding-top: 10vw
+
+  ul#main-random
+    list-style: none
+    text-align: center
+    li
+      font-size: 3rem
+      text-transform: uppercase
+      letter-spacing: 1px
+      a
+        font-weight: 400
+        @include transition(all)
+        &:hover
+          font-weight: 600
+
+  button.reload
+    width: 20vw
+    margin: 0 auto
+
+
+nav
+  ul
+    list-style: none
+    li
+      display: inline-block
+    li.log
+      a
+        cursor: pointer
+
 
 
 // Admin
