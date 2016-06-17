@@ -3,15 +3,38 @@
 $light:   #cccccc
 $purple:  #9b4dca
 
+html, body
+  height: 100%
+  width: 100%
+
 body
   padding: 2vw
   //font-family: "jaf-domus-titling-web", sans-serif
   //font-weight: 500
+  background: linear-gradient( Teal, transparent ), linear-gradient(90deg, MediumSeaGreen, transparent ), linear-gradient(-90deg, SteelBlue, transparent )
+  background-blend-mode: overlay
+  color: white
+  position: relative
+
+.main-container
+  //height: 100%
+  //@include display(flex)
+  //@include justify-content(center)
+  //@include align-items(center)
+  //@include align-items(center)
+  margin-top: 50%
+
+#main-random
+
+  @include transform(translateY(-50%))
+
 
 section#main-wrap
   text-align: center
   width: 100%
-  padding-top: 10vw
+  padding-top: 2vw
+  //@include flex(1)
+
 
   ul#main-random
     list-style: none
@@ -20,9 +43,11 @@ section#main-wrap
       font-size: 3rem
       text-transform: uppercase
       letter-spacing: 1px
+
       a
         font-weight: 400
         @include transition(all)
+        color: white
         &:hover
           font-weight: 600
 
@@ -32,8 +57,12 @@ section#main-wrap
 
 
 nav
+  position: absolute
+  bottom: 1em
+  left: 1.333em
   ul
     list-style: none
+    margin: 0
     li
       display: inline-block
     li.log

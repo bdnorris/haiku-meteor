@@ -11,7 +11,7 @@ if (Meteor.isClient) {
         nav: 'nav',
         footer: 'footer'
     },
-    defaultContentRegion: 'container',
+    defaultContentRegion: 'main',
     // comment out this next line or change to false to register new accounts
     //forbidClientAccountCreation: true
     });
