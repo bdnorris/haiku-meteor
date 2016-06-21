@@ -66,6 +66,11 @@ if (Meteor.isClient) {
       }
     });
 
+    Template.defaultLayout.helpers({
+      'routeName' : function () {
+        return FlowRouter.getRouteName();
+      }
+    });
 
     Template.homeLayout.helpers({
         'randLinesFive1' : function () {

@@ -22,15 +22,17 @@
 
 </head>
 
-<body class="home">
+<body class="home" id="">
 
 </body>
 
 
 <template name="defaultLayout">
+  <div class="" id="{{routeName}}">
   {{> Template.dynamic template=nav}}
-  <div class="main-container">{{> Template.dynamic template=main}}</div>
+  <div class="main-wrapper">{{> Template.dynamic template=main}}</div>
   {{> Template.dynamic template=footer}}
+</div>
 </template>
 
 <template name="nav">

@@ -16,50 +16,50 @@ body
   color: white
   position: relative
 
-.main-container
-  //height: 100%
-  //@include display(flex)
-  //@include justify-content(center)
-  //@include align-items(center)
-  //@include align-items(center)
-  margin-top: 50%
-
-#main-random
-
-  @include transform(translateY(-50%))
+#home .main-wrapper
+    //height: 100%
+    //@include display(flex)
+    //@include justify-content(center)
+    //@include align-items(center)
+    //@include align-items(center)
 
 
-section#main-wrap
-  text-align: center
-  width: 100%
-  padding-top: 2vw
-  //@include flex(1)
 
 
-  ul#main-random
-    list-style: none
-    text-align: center
-    li
-      font-size: 3rem
-      text-transform: uppercase
-      letter-spacing: 1px
 
-      a
-        font-weight: 400
-        @include transition(all)
-        color: white
-        &:hover
-          font-weight: 600
+    section#main-wrap
+      margin-top: 50%
 
-  button.reload
-    width: 20vw
-    margin: 0 auto
+      //@include flex(1)
+
+      #main-random
+        text-align: center
+        width: 100%
+        padding-top: 2vw
+        @include transform(translateY(-50%))
+        list-style: none
+        text-align: center
+        li
+          font-size: 3rem
+          text-transform: uppercase
+          letter-spacing: 1px
+
+          a
+            font-weight: 400
+            @include transition(all)
+            color: white
+            &:hover
+              font-weight: 600
+
+      button.reload
+        width: 20vw
+        margin: 0 auto
 
 
 nav
   position: absolute
-  bottom: 1em
-  left: 1.333em
+  top: 1em
+  right: 1.333em
   ul
     list-style: none
     margin: 0
