@@ -22,18 +22,17 @@
 
 </head>
 
-<body>
-  <div class="container">
+<body class="home" id="">
 
-
-  </div>
 </body>
 
 
 <template name="defaultLayout">
+  <div class="" id="{{routeName}}">
   {{> Template.dynamic template=nav}}
-  {{> Template.dynamic template=main}}
+  <div class="main-wrapper">{{> Template.dynamic template=main}}</div>
   {{> Template.dynamic template=footer}}
+</div>
 </template>
 
 <template name="nav">
@@ -72,9 +71,11 @@
         {{#if randLinesFive2}}
         <li><a href="#" class="five2">{{randLinesFive2.text}}</a></li>
         {{/if}}
+
+        <button class="reload">Reload</button>
     </ul>
 
-    <button class="reload">Reload</button>
+
   </section>
 
 </template>

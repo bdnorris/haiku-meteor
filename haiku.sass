@@ -3,37 +3,66 @@
 $light:   #cccccc
 $purple:  #9b4dca
 
+html, body
+  height: 100%
+  width: 100%
+
 body
   padding: 2vw
   //font-family: "jaf-domus-titling-web", sans-serif
   //font-weight: 500
+  background: linear-gradient( Teal, transparent ), linear-gradient(90deg, MediumSeaGreen, transparent ), linear-gradient(-90deg, SteelBlue, transparent )
+  background-blend-mode: overlay
+  color: white
+  position: relative
 
-section#main-wrap
-  text-align: center
-  width: 100%
-  padding-top: 10vw
+#home .main-wrapper
+    //height: 100%
+    //@include display(flex)
+    //@include justify-content(center)
+    //@include align-items(center)
+    //@include align-items(center)
 
-  ul#main-random
-    list-style: none
-    text-align: center
-    li
-      font-size: 3rem
-      text-transform: uppercase
-      letter-spacing: 1px
-      a
-        font-weight: 400
-        @include transition(all)
-        &:hover
-          font-weight: 600
 
-  button.reload
-    width: 20vw
-    margin: 0 auto
+
+
+
+    section#main-wrap
+      margin-top: 50%
+
+      //@include flex(1)
+
+      #main-random
+        text-align: center
+        width: 100%
+        padding-top: 2vw
+        @include transform(translateY(-50%))
+        list-style: none
+        text-align: center
+        li
+          font-size: 3rem
+          text-transform: uppercase
+          letter-spacing: 1px
+
+          a
+            font-weight: 400
+            @include transition(all)
+            color: white
+            &:hover
+              font-weight: 600
+
+      button.reload
+        width: 20vw
+        margin: 0 auto
 
 
 nav
+  position: absolute
+  top: 1em
+  right: 1.333em
   ul
     list-style: none
+    margin: 0
     li
       display: inline-block
     li.log

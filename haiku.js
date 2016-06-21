@@ -11,7 +11,7 @@ if (Meteor.isClient) {
         nav: 'nav',
         footer: 'footer'
     },
-    defaultContentRegion: 'container',
+    defaultContentRegion: 'main',
     // comment out this next line or change to false to register new accounts
     //forbidClientAccountCreation: true
     });
@@ -66,6 +66,11 @@ if (Meteor.isClient) {
       }
     });
 
+    Template.defaultLayout.helpers({
+      'routeName' : function () {
+        return FlowRouter.getRouteName();
+      }
+    });
 
     Template.homeLayout.helpers({
         'randLinesFive1' : function () {
