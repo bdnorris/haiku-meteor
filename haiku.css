@@ -9,32 +9,61 @@ body {
   color: white;
   position: relative; }
 
-#home .main-wrapper section#main-wrap {
-  margin-top: 50%; }
-  #home .main-wrapper section#main-wrap #main-random {
+#home .main-wrapper {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  box-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -ms-flex-align: center; }
+  #home .main-wrapper #main-random {
     text-align: center;
     width: 100%;
-    padding-top: 2vw;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%);
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-align-self: center;
+    -moz-align-self: center;
+    align-self: center;
+    -ms-flex-item-align: center;
     list-style: none;
     text-align: center; }
-    #home .main-wrapper section#main-wrap #main-random li {
+    #home .main-wrapper #main-random li {
       font-size: 3rem;
       text-transform: uppercase;
       letter-spacing: 1px; }
-      #home .main-wrapper section#main-wrap #main-random li a {
+      #home .main-wrapper #main-random li a {
         font-weight: 400;
         -webkit-transition: all;
         -moz-transition: all;
         transition: all;
         color: white; }
-        #home .main-wrapper section#main-wrap #main-random li a:hover {
+        #home .main-wrapper #main-random li a:hover {
           font-weight: 600; }
-  #home .main-wrapper section#main-wrap button.reload {
+  #home .main-wrapper button.reload {
     width: 20vw;
     margin: 0 auto; }
 
