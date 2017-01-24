@@ -131,9 +131,7 @@ if (Meteor.isClient) {
         "click #reload": function (e) {
             randLinesDep.changed();
             dynamics.animate(e.currentTarget, {
-                translateX: 350,
-                scale: 2,
-                opacity: 0.5
+                scale: 1.5,
             }, {
                 type: dynamics.spring,
                 frequency: 200,
@@ -160,13 +158,17 @@ if (Meteor.isClient) {
             /*setTimeout(function(e) {
                 console.log("hi")
             }, 1000)*/
-            dynamics.setTimeout(
-                dynamics.animate(e.currentTarget, {
-                translateX: -350,
-                scale: 12,
-                opacity: 0.5
+            dynamics.setTimeout(function(){
+                console.log('hello');
+                           dynamics.animate(e.currentTarget, {
+                scale: 1,
+            }, {
+                type: dynamics.spring,
+                frequency: 200,
+                friction: 200,
+                duration: 1500
             })
-                , 1000);
+            }, 500)
         },
 
         "click .five1": function (event) {
