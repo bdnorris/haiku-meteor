@@ -88,6 +88,7 @@ if (Meteor.isClient) {
             randLinesFive2Dep.depend();
             return randLinesFunc("5");
         },
+        
     });
 
     Template.adminLayout.helpers({
@@ -127,8 +128,45 @@ if (Meteor.isClient) {
 
     Template.homeLayout.events({
 
-        "click .reload": function () {
+        "click #reload": function (e) {
             randLinesDep.changed();
+            dynamics.animate(e.currentTarget, {
+                translateX: 350,
+                scale: 2,
+                opacity: 0.5
+            }, {
+                type: dynamics.spring,
+                frequency: 200,
+                friction: 200,
+                duration: 1500
+            });
+
+            /*Meteor.setTimeout(
+                function(e) {
+                    dynamics.animate(e.currentTarget, {
+                        translateX: -350,
+                        scale: 1,
+                        opacity: 1
+                    },
+                    {
+                        type: dynamics.spring,
+                        frequency: 200,
+                        friction: 200,
+                        duration: 1500
+                    });
+                },
+            1000);*/
+            
+            /*setTimeout(function(e) {
+                console.log("hi")
+            }, 1000)*/
+            dynamics.setTimeout(
+                dynamics.animate(e.currentTarget, {
+                translateX: -350,
+                scale: 12,
+                opacity: 0.5
+            })
+                , 1000);
         },
 
         "click .five1": function (event) {
