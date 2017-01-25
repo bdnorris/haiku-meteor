@@ -35,6 +35,33 @@ if (Meteor.isClient) {
         return false
       }
     }
+    
+    growBounceStart = function(event) {
+        dynamics.animate(event.currentTarget, {
+            'font-size': '50px',
+            opacity: 0,
+            }, {
+            type: dynamics.spring,
+            frequency: 200,
+            friction: 200,
+            duration: 800
+            });
+    }
+    growBounceEnd = function(event) {
+        dynamics.setTimeout(function(){
+            //console.log('hello');
+            dynamics.animate(event.currentTarget, {
+                scale: 1,
+                'font-size': '30px',
+                opacity: 1,
+                }, {
+                type: dynamics.spring,
+                frequency: 200,
+                friction: 200,
+                duration: 500
+                })  
+            }, 500)
+    }
     // ADDING SUPERADMIN EXAMPLE from MONGO CONSOLE
     /*
     db.users.update(
@@ -128,60 +155,27 @@ if (Meteor.isClient) {
 
     Template.homeLayout.events({
 
-        "click #reload": function (e) {
+        "click #reload": function (event) {
             randLinesDep.changed();
-            dynamics.animate(e.currentTarget, {
-                scale: 1.5,
-            }, {
-                type: dynamics.spring,
-                frequency: 200,
-                friction: 200,
-                duration: 1500
-            });
-
-            /*Meteor.setTimeout(
-                function(e) {
-                    dynamics.animate(e.currentTarget, {
-                        translateX: -350,
-                        scale: 1,
-                        opacity: 1
-                    },
-                    {
-                        type: dynamics.spring,
-                        frequency: 200,
-                        friction: 200,
-                        duration: 1500
-                    });
-                },
-            1000);*/
-            
-            /*setTimeout(function(e) {
-                console.log("hi")
-            }, 1000)*/
-            dynamics.setTimeout(function(){
-                console.log('hello');
-                           dynamics.animate(e.currentTarget, {
-                scale: 1,
-            }, {
-                type: dynamics.spring,
-                frequency: 200,
-                friction: 200,
-                duration: 1500
-            })
-            }, 500)
         },
 
         "click .five1": function (event) {
             event.preventDefault();
-            randLinesFive1Dep.changed();
+            growBounceStart(event);
+            Meteor.setTimeout(function(){randLinesFive1Dep.changed()}, 400);
+            growBounceEnd(event);
         },
         "click .seven": function (event) {
             event.preventDefault();
-            randLinesSevenDep.changed();
+            growBounceStart(event);
+            Meteor.setTimeout(function(){randLinesSevenDep.changed()}, 400);
+            growBounceEnd(event);
         },
         "click .five2": function (event) {
             event.preventDefault();
-            randLinesFive2Dep.changed();
+            growBounceStart(event);
+            Meteor.setTimeout(function(){randLinesFive2Dep.changed()}, 400);
+            growBounceEnd(event);
         },
     });
 

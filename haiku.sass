@@ -3,7 +3,7 @@
 $light:   #cccccc
 $purple:  #9b4dca
 
-html, body
+html, body, body > div
   height: 100%
   width: 100%
 
@@ -16,41 +16,46 @@ body
   color: white
   position: relative
 
-#home .main-wrapper
-  //height: 100%
-  @include display(flex)
-  @include justify-content(center)
-  @include align-items(center)
-  //@include align-items(center)
+#home, .main-wrapper
+    height: 100%
+    overflow: hidden
 
+.main-wrapper
+    @include display(flex)
+    @include justify-content(center)
+    @include align-items(center)
+    min-height: 100%
+    //@include align-items(center)
+    //section#main-wrap
+    overflow: hidden
 
+    #main-random
+        text-align: center
+        width: 100%
+        margin: auto
+        padding: 2em
+        //@include align-self(center)
+        //padding-top: 2vw
+        //@include transform(translateY(-50%))
+        list-style: none
+        text-align: center
+        overflow: hidden
+        li
+            width: 100%
+            margin-bottom: 0.5em
+            overflow: hidden
+            font-size: 30px
+            line-height: 30px
+            text-transform: uppercase
+            letter-spacing: 1px
+            a
+                font-weight: 400
+                @include transition(all)
+                color: white
+                &:hover
+                    font-weight: 600
 
-  //section#main-wrap
-    //margin-top: 50%
-
-    //@include flex(1)
-
-  #main-random
-    text-align: center
-    width: 100%
-    @include flex(1)
-    @include align-self(center)
-    //padding-top: 2vw
-    //@include transform(translateY(-50%))
-    list-style: none
-    text-align: center
-    li
-      font-size: 3rem
-      text-transform: uppercase
-      letter-spacing: 1px
-      a
-        font-weight: 400
-        @include transition(all)
-        color: white
-        &:hover
-          font-weight: 600
-
-  button#reload
+button#reload
     width: 20vw
     margin: 0 auto
 
