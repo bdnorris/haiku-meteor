@@ -1,24 +1,23 @@
 <head>
   <title>Haiku Generator</title>
-    <!-- Google Fonts -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
 
-<!-- CSS Reset -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
 
-<!-- Milligram CSS minified -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.0.3/milligram.min.css">
+    <!-- Milligram CSS minified -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.0.3/milligram.min.css">
 
-<script>
-  (function(d) {
-    var config = {
-      kitId: 'jlq2jec',
-      scriptTimeout: 3000,
-      async: true
-    },
-    h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-  })(document);
-</script>
+    <!-- typekit -->
+    <script>
+      (function(d) {
+        var config = {
+          kitId: 'jlq2jec',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>
 
 </head>
 
@@ -39,13 +38,12 @@
   <nav>
     {{#if currentUser}}
       <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/admin">Admin</a></li>
+          <li><a href="/">Home</a> | </li>
+          <li><a href="/admin">Admin</a> | </li>
           <!--<li><a href="#" id="log-out">Log-Out</a></li>-->
           <li class="log">{{> atNavButton}}</li>
       </ul>
     {{/if}}
-
   </nav>
 </template>
 
@@ -54,8 +52,8 @@
 </template>
 
 <template name="homeLayout">
-  <section id="main-wrap">
-    <!--<div>
+  <!--<section id="main-wrap">
+    <div>
       <h1>Random Haiku</h1>
     </div>-->
 
@@ -72,11 +70,11 @@
         <li><a href="#" class="five2">{{randLinesFive2.text}}</a></li>
         {{/if}}
 
-        <button class="reload">Reload</button>
+        <button id="reload">Reload</button>
     </ul>
 
 
-  </section>
+  <!--</section>-->
 
 </template>
 

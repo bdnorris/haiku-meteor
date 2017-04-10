@@ -35,6 +35,33 @@ if (Meteor.isClient) {
         return false
       }
     }
+    
+    growBounceStart = function(event) {
+        dynamics.animate(event.currentTarget, {
+            'font-size': '40px',
+            opacity: 0,
+            }, {
+            type: dynamics.spring,
+            frequency: 200,
+            friction: 200,
+            duration: 800
+            });
+    }
+    growBounceEnd = function(event) {
+        dynamics.setTimeout(function(){
+            //console.log('hello');
+            dynamics.animate(event.currentTarget, {
+                scale: 1,
+                'font-size': '30px',
+                opacity: 1,
+                }, {
+                type: dynamics.spring,
+                frequency: 200,
+                friction: 200,
+                duration: 500
+                })  
+            }, 500)
+    }
     // ADDING SUPERADMIN EXAMPLE from MONGO CONSOLE
     /*
     db.users.update(
@@ -88,6 +115,7 @@ if (Meteor.isClient) {
             randLinesFive2Dep.depend();
             return randLinesFunc("5");
         },
+        
     });
 
     Template.adminLayout.helpers({
@@ -127,21 +155,27 @@ if (Meteor.isClient) {
 
     Template.homeLayout.events({
 
-        "click .reload": function () {
+        "click #reload": function (event) {
             randLinesDep.changed();
         },
 
         "click .five1": function (event) {
             event.preventDefault();
-            randLinesFive1Dep.changed();
+            growBounceStart(event);
+            Meteor.setTimeout(function(){randLinesFive1Dep.changed()}, 400);
+            growBounceEnd(event);
         },
         "click .seven": function (event) {
             event.preventDefault();
-            randLinesSevenDep.changed();
+            growBounceStart(event);
+            Meteor.setTimeout(function(){randLinesSevenDep.changed()}, 400);
+            growBounceEnd(event);
         },
         "click .five2": function (event) {
             event.preventDefault();
-            randLinesFive2Dep.changed();
+            growBounceStart(event);
+            Meteor.setTimeout(function(){randLinesFive2Dep.changed()}, 400);
+            growBounceEnd(event);
         },
     });
 
