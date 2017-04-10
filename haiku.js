@@ -38,7 +38,7 @@ if (Meteor.isClient) {
     
     growBounceStart = function(event) {
         dynamics.animate(event.currentTarget, {
-            'font-size': '50px',
+            'font-size': '40px',
             opacity: 0,
             }, {
             type: dynamics.spring,
