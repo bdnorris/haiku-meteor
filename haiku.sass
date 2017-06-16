@@ -15,18 +15,22 @@ body
   background: linear-gradient( Teal, transparent ), linear-gradient(90deg, MediumSeaGreen, transparent ), linear-gradient(-90deg, SteelBlue, transparent )
   background-blend-mode: overlay
   color: white
-  
+
 
 #admin
-    background-color: white;
-    color: $black;
+    background-color: white
+    color: $black
     position: relative
     .main-wrapper
-        display: block;
-        padding: 2em;
-        position: relative;
+        display: block
+        padding: 2em
+        position: relative
         form
-            max-width: 480px;
+            max-width: 480px
+
+#signin
+  background-color: white
+  color: $purple
 
 #home, .main-wrapper
     height: 100%
@@ -55,21 +59,24 @@ body
         li
             width: 100%
             margin-bottom: 0.5em
-            overflow: hidden
+            overflow: visible
             font-size: 30px
             line-height: 30px
             text-transform: uppercase
             letter-spacing: 1px
             a
-                font-weight: 400
-                @include transition(all)
-                color: white
-                &:hover
-                    font-weight: 600
+              display: inline-block
+              font-weight: 400
+              @include transition(all)
+              color: white
+              &:hover
+                  font-weight: 600
 
 button#reload
-    width: 20vw
+    width: 180px
     margin: 0 auto
+    @media only screen and (min-width:480px)
+      width: 20vw
 
 
 nav
