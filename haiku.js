@@ -35,32 +35,67 @@ if (Meteor.isClient) {
         return false
       }
     }
-    
+
     growBounceStart = function(event) {
         dynamics.animate(event.currentTarget, {
-            'font-size': '40px',
-            opacity: 0,
-            }, {
-            type: dynamics.spring,
-            frequency: 200,
-            friction: 200,
-            duration: 800
-            });
+          // 'font-size': '40px',
+          // translateX: 350,
+          scale: 2,
+          opacity: 0
+        }, {
+          type: dynamics.spring,
+          frequency: 200,
+          friction: 200,
+          duration: 1500
+         });
     }
     growBounceEnd = function(event) {
         dynamics.setTimeout(function(){
             //console.log('hello');
             dynamics.animate(event.currentTarget, {
                 scale: 1,
-                'font-size': '30px',
+                // 'font-size': '30px',
                 opacity: 1,
                 }, {
                 type: dynamics.spring,
                 frequency: 200,
                 friction: 200,
                 duration: 500
-                })  
+                })
             }, 500)
+    }
+    bounceEmAllStart = function(event) {
+      console.log('bounceEmAllStart');
+      let lines = document.querySelectorAll('#main-random li');
+      for (let i = 0 ; i < lines.length ; i++) {
+        dynamics.animate(lines[i], {
+          scale: 2,
+          opacity: 0
+        }, {
+          type: dynamics.spring,
+          frequency: 200,
+          friction: 200,
+          duration: 500
+        });
+      }
+    }
+    bounceEmAllEnd = function(event) {
+      console.log('bounceEmAllEnd');
+      let lines = document.querySelectorAll('#main-random li');
+      for (let i = 0 ; i < lines.length ; i++) {
+      dynamics.setTimeout(function(){
+        dynamics.animate(lines[i], {
+            scale: 1,
+            // 'font-size': '30px',
+            opacity: 1,
+            }, {
+            type: dynamics.spring,
+            frequency: 200,
+            friction: 200,
+            duration: 500
+            })
+      }, 500)
+      }
     }
     // ADDING SUPERADMIN EXAMPLE from MONGO CONSOLE
     /*
@@ -115,7 +150,7 @@ if (Meteor.isClient) {
             randLinesFive2Dep.depend();
             return randLinesFunc("5");
         },
-        
+
     });
 
     Template.adminLayout.helpers({
@@ -156,7 +191,11 @@ if (Meteor.isClient) {
     Template.homeLayout.events({
 
         "click #reload": function (event) {
-            randLinesDep.changed();
+            bounceEmAllStart(event);
+            Meteor.setTimeout(function(){
+              randLinesDep.changed();
+            }, 600);
+            bounceEmAllEnd(event);
         },
 
         "click .five1": function (event) {
